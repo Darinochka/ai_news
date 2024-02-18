@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  flask_app:
+    restart: always
+    build: ./app
+    volumes:
+      - ./app/config:/config
+    ports:
+      - "4444:4444"
+    command: uvicorn main:app --host=0.0.0.0 --port=4444 --log-level=info
